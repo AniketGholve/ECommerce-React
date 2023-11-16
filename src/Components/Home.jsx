@@ -9,6 +9,12 @@ import { useSelector } from "react-redux";
 const Card1 = lazy(() => import('./Card'));
 const Home = () => {
     let [activeSubNav, setActiveSubNav] = useState("All");
+    // let arr = ["All", "Mac", "IPhone", "IPad", "IPod", "Accessories"]
+    // let [count, setCount] = useState(0);
+    // setInterval(() => {
+    //     setCount((count + 1) % 6)
+    //     setActiveSubNav(arr[count]);
+    // }, 5000)
     var settings = {
         dots: true,
         infinite: true,
@@ -60,7 +66,7 @@ const Home = () => {
                 {
                     data.filter((val) => val.cat.includes("feature")).map((item, key) => (
                         <Suspense fallback={<div> Please Wait... </div>} key={key}>
-                            <Card1 key={key} data={item.price} name={item.name} imageUrl={item.url} id={item.id}/>
+                            <Card1 key={key} data={item.price} name={item.name} imageUrl={item.url} id={item.id} />
                         </Suspense>
                     ))
                 }

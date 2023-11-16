@@ -5,7 +5,8 @@ let Slice = createSlice({
     name: "ECommerce",
     initialState: {
         storeData: data,
-        cartData: []
+        cartData: [],
+        loggedUser: null
     },
     reducers: {
         addToCart: (state, action) => {
@@ -42,9 +43,12 @@ let Slice = createSlice({
             }
 
             localStorage.setItem("cartData", JSON.stringify(cartData))
+        },
+        getLoggedUser: (state, action) => {
+            state.loggedUser = localStorage.getItem("loggedUser") ?? null
         }
     }
 })
 
-export const { addToCart, getCartData, removeFromCart } = Slice.actions
+export const { addToCart, getCartData, removeFromCart, getLoggedUser } = Slice.actions
 export default Slice.reducer;
