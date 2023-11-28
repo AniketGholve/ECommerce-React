@@ -1,9 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import Card from "./Card"
+import { useEffect } from "react"
+import { getProducts } from "./Redux/Slice"
 
 const ProductGallary = ({ category }) => {
     let data = useSelector((store) => store.ECommerce.storeData)
+    let dispatch=useDispatch();
+    useEffect(()=>{
+        dispatch(getProducts())
+    },[])
     return (
         <div className="storeGallary">
             {data.filter((item) => item.cat.includes(category)).map((item, key) => (

@@ -1,10 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
-import data from "../Data/Data";
+// import data from "../Data/Data";
+import axios from "axios";
+let data1=[];
+
+async function getData() {
+    await axios.get("http://localhost:3000/getData").then(res => data1 = res.data)
+    return data1;
+}
+getData()
 
 let Slice = createSlice({
     name: "ECommerce",
     initialState: {
-        storeData: data,
+        storeData: data1,
         cartData: [],
         loggedUser: null
     },
@@ -28,6 +36,9 @@ let Slice = createSlice({
         getCartData: (state, action) => {
             state.cartData = JSON.parse(localStorage.getItem("cartData")) ?? [];
         },
+        getProducts:(state,action)=>{
+            state.storeData=data1;
+        },
         removeFromCart: (state, action) => {
             let data = action.payload;
             let cartData = JSON.parse(localStorage.getItem("cartData")) ?? [];
@@ -50,5 +61,5 @@ let Slice = createSlice({
     }
 })
 
-export const { addToCart, getCartData, removeFromCart, getLoggedUser } = Slice.actions
+export const { addToCart, getCartData, removeFromCart, getLoggedUser ,getProducts} = Slice.actions
 export default Slice.reducer;
