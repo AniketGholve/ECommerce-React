@@ -456,23 +456,28 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 2em;
       text-align: center;
   }
 
-  .loginForm>input:focus-visible {
-      outline: none;
+  .loginView>form {
+      height: 100%;
+      width: 90%;
+      margin: auto;
   }
-
-  .loginForm>input {
-      border: none;
-      border-bottom: 2px solid rgb(199, 199, 199);
-      width: 80%;
-      margin: 0 auto;
-      font-size: 16px;
-      padding: 0% 1em;
+  .userActions{
+    position: relative;
   }
-
+  .logoutBtn{
+    position: absolute;
+    left: 3%;
+    bottom: -30%;
+}
+.mxs-1{
+    margin: 0% 1em;
+}
+.fa-sign-out{
+    margin:0 10px ;
+}
   .login-btn {
       width: 80%;
       margin: 0 auto;
