@@ -4,11 +4,11 @@ const Footer = () => {
 
   const links = [
     { text: 'Home', url: '/' },
-    { text: 'Bollywood', url: '/bollywood' },
-    { text: 'Technology', url: '/technology' },
-    { text: 'Hollywood', url: '/hollywood' },
-    { text: 'Fitness', url: '/fitness' },
-    { text: 'Food', url: '/food' },
+    { text: 'Store', url: '/store' },
+    { text: 'Iphone', url: '/iphone' },
+    { text: 'Ipad', url: '/ipad' },
+    { text: 'Mackbook', url: '/mac' },
+    { text: 'Accesories', url: '/accesories' },
   ];
   const socialMediaLinks = [
     { name: 'Facebook', url: 'https://www.facebook.com/aniketgholve02/' },
