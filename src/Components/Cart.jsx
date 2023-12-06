@@ -1,18 +1,52 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addToCart, getCartData, removeFromCart } from "./Redux/Slice"
-
+import { addToCart, getCartData, removeFromCart,getLoggedUser } from "./Redux/Slice"
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
     let dispatch = useDispatch()
     let data = useSelector(state => state.ECommerce.cartData)
     let amtArray = data.map((item) => parseInt(item.price.split("$")[1] * item.quantity))
     let totalAmt = amtArray.reduce((item, acc) => acc + item, 0)
+  
     useEffect(() => {
         dispatch(getCartData())
     }, [])
+    let loggedUser = useSelector(state => state.ECommerce.loggedUser)
+    let checkDetails=()=>{
+        dispatch(getLoggedUser())
+        console.log(loggedUser)
+        if(loggedUser!==null){
+            localStorage.clear()
+            dispatch(getCartData())
+            toast.success("Order Placed",{
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            })
+        }
+        else{
+            toast.error("User Not Logged In",{
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+            })
+        }
+    }
     return (
         <>
+        <ToastContainer/>
             {
                 data.length === 0 ?
                     <div className="emptyCartDiv">
@@ -37,7 +71,7 @@ const Cart = () => {
                             }
 
                             <div className="placeOrderDiv">
-                                <button className="btn btn-danger">Place Order</button>
+                                <button className="btn btn-danger" onClick={checkDetails}>Place Order</button>
                             </div>
                         </div>
                         <div className="priceDetails">

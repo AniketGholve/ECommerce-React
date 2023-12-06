@@ -1,11 +1,12 @@
-import { Suspense, lazy, useState } from "react"
+import { Suspense, lazy, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 import ShippingDetails from "./ShippingDetails";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "./Redux/Slice";
 const Card1 = lazy(() => import('./Card'));
 const Home = () => {
     let [activeSubNav, setActiveSubNav] = useState("All");
@@ -23,11 +24,32 @@ const Home = () => {
         slidesToScroll: 1,
         className: 'slides'
     };
+    var mainBannerSettings = {
+        arrows: true,
+        dots: false,
+        pauseOnHover: false,
+        infinite: true,
+        speed: 5000,
+        autoplay: true,
+        fade: true,
+        variableWidth: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        className: 'slidesMain'
+    };
+    let dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getProducts())
+    }, [])
     let data = useSelector((state) => state.ECommerce.storeData);
     return (
         <>
-            <div className="homeSlider w-80">
-                <div></div>
+            <div className="w-80">
+                <Slider {...mainBannerSettings}>
+                    <img src="https://invent.irujul.com/theme/default/img/npi/npi-20/watch_2020.jpg" alt="" />
+                    <img src="https://s3b.cashify.in/gpro/uploads/2022/05/24035928/Featured_image_Apple-Smart-Watches-for-Women.jpg" alt="" />
+                    <img src="https://i.pinimg.com/originals/8e/f7/26/8ef726ffe903afa19aa545e23f3b9c72.png" alt="" />
+                </Slider>
             </div>
             <h2 className="text-center">BEST SELLER</h2>
             <div className="nav">
@@ -49,12 +71,12 @@ const Home = () => {
                     ))
                 }
             </div>
-            <div className="homeSliderBottom w-80">
-                <div>
-                    <h1>iPhone 15 Pro</h1>
-                    <p>Performance and design. Taken right to the edge</p>
-                    <button>Shop Now</button>
-                </div>
+            <div className=" w-80">
+            <Slider {...mainBannerSettings}>
+                    <img src="https://www.maclocks.eu/media/upload/cms/banner-lp-ledge.jpg" alt="" />
+                    <img src="https://file.hstatic.net/1000347078/collection/banner_macbook_92054b106e2d457f9391d59825973023.jpg" alt="" />
+                    <img src="https://i.pinimg.com/originals/8e/f7/26/8ef726ffe903afa19aa545e23f3b9c72.png" alt="" />
+                </Slider>
             </div>
             <div className="shippingDetails">
                 <ShippingDetails data={"lorem20"} name={"FREE SHIPPING"} imageUrl={"shipping.jpg"} />

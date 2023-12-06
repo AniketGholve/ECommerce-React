@@ -10,6 +10,8 @@ import Mac from './Components/Mac'
 import Accesories from './Components/Accesories'
 import Details from './Components/Details'
 import Cart from './Components/Cart'
+import Search from './Components/Search'
+import Footer from './Components/Footer'
 
 function App() {
   return (
@@ -26,7 +28,9 @@ function App() {
           <Route path='/accesories' element={<Accesories />} />
           <Route path='/details/:id' element={<Details />} />
           <Route path='/cartdetails' element={<Cart />} />
+          <Route path='/search/:product' element={<Search />} />
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )

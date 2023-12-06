@@ -105,11 +105,9 @@
       background-size: contain;
   }
 
-  .homeSliderBottom {
-      background-color: #2E90E5;
-  }
 
-  .homeSliderBottom div {
+
+  /* .homeSliderBottom div {
       height: 30em;
       width: 70%;
       margin: auto;
@@ -140,7 +138,7 @@
       padding-bottom: 0.5em;
       position: sticky;
       cursor: pointer;
-  }
+  } */
 
   .cardGallary {
       width: 60%;
@@ -184,7 +182,33 @@
           font-size: 30px;
       }
   }
+  .slidesMain {
+        .slick-slide img{
+            height: 550px;
+        }
+      .slick-prev::before {
+          color: black;
+          font-size: 30px;
+          font-weight: bold;
+      }
 
+      .slick-next::before {
+          color: black;
+          font-size: 30px;
+      }
+  }
+  .slider-no-arrow{
+    .slick-slide img{
+        height: 500px;
+    }
+    .slick-prev::before {
+        color: white;
+    }
+
+    .slick-next::before {
+        color: white;
+    }
+  }
   .backgroundSize-contain {
       background-size: contain !important;
   }
@@ -425,7 +449,8 @@
       position: fixed;
       top: 0%;
       z-index: 2;
-  }
+      background-color: #ffffff80;
+    }
 
   .sidebarUserView {
       width: 40%;
@@ -464,20 +489,25 @@
       width: 90%;
       margin: auto;
   }
-  .userActions{
-    position: relative;
+
+  .userActions {
+      position: relative;
   }
-  .logoutBtn{
-    position: absolute;
-    left: 3%;
-    bottom: -30%;
-}
-.mxs-1{
-    margin: 0% 1em;
-}
-.fa-sign-out{
-    margin:0 10px ;
-}
+
+  .logoutBtn {
+      position: absolute;
+      left: 3%;
+      bottom: -30%;
+  }
+
+  .mxs-1 {
+      margin: 0% 1em;
+  }
+
+  .fa-sign-out {
+      margin: 0 10px;
+  }
+
   .login-btn {
       width: 80%;
       margin: 0 auto;
@@ -502,5 +532,51 @@
 
       100% {
           margin-top: 5%;
+      }
+  }
+
+
+  @media screen and (max-width:580px) {
+      .homeSlider div {
+          height: 18em;
+      }
+
+      .nav-main {
+          position: fixed;
+          top: 0%;
+          background-color: #ff964b;
+          width: 100%;
+          height: 100%;
+          z-index: 9999;
+      }
+
+      .nav ul {
+          display: flex;
+          flex-direction: column;
+          gap: 3em;
+          justify-content: center;
+          width: 80%;
+      }
+
+      .cardGallary {
+          grid-template-columns: repeat(2, 1fr);
+      }
+
+      .shippingDetails {
+          grid-template-columns: repeat(1, 1fr);
+      }
+
+      .nav ul li {
+          display: flex;
+          justify-content: center;
+          padding: 1em;
+      }
+
+      .cardGallary {
+          width: 90%;
+      }
+
+      ul {
+          margin: 0%;
       }
   }

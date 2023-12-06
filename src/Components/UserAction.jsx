@@ -41,35 +41,34 @@ const UserAction = () => {
     function toggleLogginBtn() {
         setLoginView(true)
         setLogoutBtn(!logoutBtn)
-        
     }
     function logoutUser() {
         loggedUser && localStorage.removeItem("loggedUser")
         setLoginView(false);
         dispatch(getLoggedUser())
     }
+    const tosterSuccess = (data) => toast.success(data, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
+    const tosterError = (data) => toast.error(data, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+    });
     const sendLoginData = (e) => {
         let data = {}
-        const tosterSuccess = (data) => toast.success(data, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
-        const tosterError = (data) => toast.error(data, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-        });
         e.preventDefault()
         const emailReg = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/);
         if (emailReg.test(e.target.email.value)) {
@@ -78,7 +77,6 @@ const UserAction = () => {
                 "password": e.target.password.value
             }
             axios.post("http://localhost:3000/login", data).then(res => res.data.msg ? setUserData(res.data.username) : console.log(res.data.err));
-
         }
         else {
             toast.error('Invalid Email or password', {
@@ -93,10 +91,11 @@ const UserAction = () => {
             });
         }
     }
-
+    let [searchToggle, setSearchToggle] = useState(true)
+    let [searchKey, setSearchKey] = useState(null)
     return (
         <>
-            <div className="d-flex justify-content-around ">
+            <div className="d-flex justify-content-around mx-1 ">
                 <div>
                     <select name="" id="" className="mx-1 border-none">
                         <option value="" selected>En</option>
@@ -106,6 +105,8 @@ const UserAction = () => {
                     </select>
                 </div>
                 <div className="userActions">
+                    {searchToggle && <TextField variant="standard" onChange={(e) => setSearchKey(e.target.value)} />}
+                    {searchToggle && <i className="mx-1 fa-solid fa-magnifying-glass" onClick={() => Navi(`search/${searchKey ?? "NA"}`)} />}
                     <button className="mx-1 cartBtn" onClick={() => toggleLogginBtn()}><i className="fa-solid fa-user px-0-5 "></i>{loggedUser ?? "login"}</button>
                     {(loggedUser && logoutBtn) && <button className="logoutBtn cartBtn" onClick={() => logoutUser()}><i className="fa fa-sign-out" aria-hidden="true"></i>Logout</button>}
                     {/* {loggedUser && <button className="mx-1 cartBtn" onClick={() => setLoginView(true)}><i className="fa-solid fa-user px-0-5"></i>{loggedUser ?? "login"}</button>} */}

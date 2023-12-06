@@ -19,6 +19,10 @@ const ProductGallary = ({ category }) => {
     )
 }
 const StoreGallary = () => {
+    let dispatch=useDispatch();
+    useEffect(()=>{
+        dispatch(getProducts())
+    },[])
     let data = useSelector((store) => store.ECommerce.storeData)
     return (
         <div className="storeGallary">
