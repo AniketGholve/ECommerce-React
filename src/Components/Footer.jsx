@@ -39,12 +39,12 @@ const Footer = () => {
           <img src={'https://seeklogo.com/images/B/business-people-circle-logo-83C8022853-seeklogo.com.png'} alt="Logo" width={'30%'} style={{ justifySelf: 'center', marginTop: '20px' }} />
         </div>
         <div>
-          <h1 className="">The Siren</h1>
-          <p className="text-center">Copyright <i className="fa-solid fa-copyright"></i> 2023 The Siren</p>
+          <h1 className="">iShop</h1>
+          <p className="text-center">Copyright <i className="fa-solid fa-copyright"></i> 2023 iShop</p>
         </div>
       </div>
       <div className="d-grid footerData" >
-        <h3 className="footer-heading" onClick={() => setActiveFooterBlog(!activeFooterBlog)}>Blogs</h3>
+        <h3 className="footer-heading" onClick={() => setActiveFooterBlog(!activeFooterBlog)}>Products</h3>
         <div className={activeFooterBlog ? "footer-links" : "footer-links hideFooterLinks"}>
           <ul>
             {links.map((link, index) => (
