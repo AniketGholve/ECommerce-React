@@ -393,6 +393,7 @@
       width: 100%;
       margin-top: 5%;
       text-align: center;
+      position: relative;
       animation-name: emptyCart;
       animation-duration: 5s;
       animation-fill-mode: both;
@@ -523,15 +524,15 @@
 
   @keyframes emptyCart {
       0% {
-          margin-top: 5%;
+          top: 0px;
       }
 
       50% {
-          margin-top: 7%;
+          top: 20px;
       }
 
       100% {
-          margin-top: 5%;
+          top: 0px;
       }
   }
 
