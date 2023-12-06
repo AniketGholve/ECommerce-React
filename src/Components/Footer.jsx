@@ -7,7 +7,7 @@ const Footer = () => {
     { text: 'Store', url: '/store' },
     { text: 'Iphone', url: '/iphone' },
     { text: 'Ipad', url: '/ipad' },
-    { text: 'Mackbook', url: '/mac' },
+    { text: 'Macbook', url: '/mac' },
     { text: 'Accesories', url: '/accesories' },
   ];
   const socialMediaLinks = [

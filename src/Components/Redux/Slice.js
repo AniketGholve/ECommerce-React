@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import data from "../Data/Data";
 import axios from "axios";
 let data1=[];
 

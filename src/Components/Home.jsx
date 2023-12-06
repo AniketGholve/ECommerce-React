@@ -20,7 +20,7 @@ const Home = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 1,
         slidesToScroll: 1,
         className: 'slides'
     };
@@ -38,9 +38,12 @@ const Home = () => {
         className: 'slidesMain'
     };
     let dispatch = useDispatch();
+    setTimeout(() => {
+        dispatch(getProducts())
+    }, 100);
     useEffect(() => {
         dispatch(getProducts())
-    }, [])
+    })
     let data = useSelector((state) => state.ECommerce.storeData);
     return (
         <>

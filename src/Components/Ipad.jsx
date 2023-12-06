@@ -22,9 +22,9 @@ const Ipad = () => {
                 <div className="storeBox">
                     <div className="homeSliderBottom">
                         <Slider {...mainBannerSettings}>
-                            <img src="https://invent.irujul.com/theme/default/img/npi/npi-20/watch_2020.jpg" alt="" />
-                            <img src="https://s3b.cashify.in/gpro/uploads/2022/05/24035928/Featured_image_Apple-Smart-Watches-for-Women.jpg" alt="" />
-                            <img src="https://i.pinimg.com/originals/8e/f7/26/8ef726ffe903afa19aa545e23f3b9c72.png" alt="" />
+                            <img src="https://i0.wp.com/store.ave.com.bn/wp-content/uploads/2022/03/iPad_Air_Web_Banner_Avail_1400x700__SEA_FFH.png?fit=1400%2C700&ssl=1" alt="" />
+                            <img src="https://i0.wp.com/store.ave.com.bn/wp-content/uploads/2022/11/SEA_iPad_Pro_Web_Banner_Avail_1400x700_FFH.png?fit=1400%2C700&ssl=1" alt="" />
+                            <img src="https://media.idownloadblog.com/wp-content/uploads/2020/04/iPad-Pro-float-ad-banner.jpg" alt="" />
                         </Slider>
                     </div>
                     <ProductGallary category="ipad" />

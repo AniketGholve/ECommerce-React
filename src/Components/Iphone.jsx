@@ -22,9 +22,9 @@ const Iphone = () => {
                 <div className="storeBox">
                     <div className="homeSliderBottom">
                         <Slider {...mainBannerSettings}>
-                            <img src="https://invent.irujul.com/theme/default/img/npi/npi-20/watch_2020.jpg" alt="" />
-                            <img src="https://s3b.cashify.in/gpro/uploads/2022/05/24035928/Featured_image_Apple-Smart-Watches-for-Women.jpg" alt="" />
                             <img src="https://i.pinimg.com/originals/8e/f7/26/8ef726ffe903afa19aa545e23f3b9c72.png" alt="" />
+                            <img src="https://s3b.cashify.in/gpro/uploads/2022/05/24035928/Featured_image_Apple-Smart-Watches-for-Women.jpg" alt="" />
+                            <img src="https://invent.irujul.com/theme/default/img/npi/npi-20/watch_2020.jpg" alt="" />
                         </Slider>
                     </div>
                     <ProductGallary category="iphone" />

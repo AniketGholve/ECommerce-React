@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Navbar from './Components/Navbar'
+import Navbar, { NavbarMob } from './Components/Navbar'
 import Home from './Components/Home'
 import UserAction from './Components/UserAction'
 import Store from './Components/Store'
@@ -12,13 +12,25 @@ import Details from './Components/Details'
 import Cart from './Components/Cart'
 import Search from './Components/Search'
 import Footer from './Components/Footer'
+import { useEffect } from 'react'
+import { getProducts } from './Components/Redux/Slice'
+import { useDispatch } from 'react-redux'
 
 function App() {
+  let dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProducts())
+  }, [dispatch])
   return (
     <>
       <BrowserRouter>
         <UserAction />
-        <Navbar />
+        <div className='show-nav'>
+          <Navbar />
+        </div>
+        <div className='show-mob-nav'>
+          <NavbarMob />
+        </div>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/store' element={<Store />} />
@@ -30,7 +42,7 @@ function App() {
           <Route path='/cartdetails' element={<Cart />} />
           <Route path='/search/:product' element={<Search />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </BrowserRouter>
     </>
   )

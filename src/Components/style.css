@@ -167,7 +167,7 @@
 
   .slick-slide>div {
       margin: 0 10px;
-      padding: 20px;
+
   }
 
   .slides {
@@ -182,10 +182,12 @@
           font-size: 30px;
       }
   }
+
   .slidesMain {
-        .slick-slide img{
-            height: 550px;
-        }
+      .slick-slide img {
+          height: 550px;
+      }
+
       .slick-prev::before {
           color: black;
           font-size: 30px;
@@ -197,18 +199,21 @@
           font-size: 30px;
       }
   }
-  .slider-no-arrow{
-    .slick-slide img{
-        height: 500px;
-    }
-    .slick-prev::before {
-        color: white;
-    }
 
-    .slick-next::before {
-        color: white;
-    }
+  .slider-no-arrow {
+      .slick-slide img {
+          height: 500px;
+      }
+
+      .slick-prev::before {
+          color: white;
+      }
+
+      .slick-next::before {
+          color: white;
+      }
   }
+
   .backgroundSize-contain {
       background-size: contain !important;
   }
@@ -451,7 +456,7 @@
       top: 0%;
       z-index: 2;
       background-color: #ffffff80;
-    }
+  }
 
   .sidebarUserView {
       width: 40%;
@@ -497,7 +502,7 @@
 
   .logoutBtn {
       position: absolute;
-      left: 3%;
+      left: 59%;
       bottom: -30%;
   }
 
@@ -520,6 +525,22 @@
       color: #055580;
       font-weight: bold;
       box-shadow: 2px 2px 10px #c2c2c2;
+  }
+
+  .hide-nav {
+      display: none;
+  }
+
+  .h-50 {
+      height: 50vh;
+  }
+
+  .show-nav {
+      display: block;
+  }
+
+  .show-mob-nav {
+      display: none;
   }
 
   @keyframes emptyCart {
@@ -545,7 +566,7 @@
       .nav-main {
           position: fixed;
           top: 0%;
-          background-color: #ff964b;
+          background-color: #ff964bf5;
           width: 100%;
           height: 100%;
           z-index: 9999;
@@ -579,5 +600,78 @@
 
       ul {
           margin: 0%;
+      }
+
+      .hide-nav {
+          display: block;
+      }
+
+      .slick-slide img {
+          height: 18em !important;
+      }
+
+      .show-nav {
+          display: none;
+      }
+
+      .show-mob-nav {
+          display: block;
+      }
+
+      .storeGallary {
+          grid-template-columns: repeat(2, 1fr);
+      }
+
+      .storeSidebar {
+          display: none;
+      }
+
+      .storeBox {
+          width: 100%;
+      }
+
+      .thumb {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          height: auto;
+          justify-items: center;
+      }
+
+      .details {
+          flex-direction: column;
+      }
+
+      .details div {
+          margin: auto;
+      }
+
+      .btn {
+          margin-top: 2em;
+          width: 100%;
+      }
+
+      .cart {
+          grid-template-columns: 1fr;
+          width: 100%;
+      }
+
+      .cartDiv {
+          padding: 2em;
+      }
+
+      .cartProducts {
+          margin-right: 2em;
+      }
+
+      .placeOrderDiv {
+          padding: 0.5em;
+      }
+
+      .priceDetails {
+          margin: auto;
+          width: 90%;
+      }
+      .model {
+        width: 100%;
       }
   }

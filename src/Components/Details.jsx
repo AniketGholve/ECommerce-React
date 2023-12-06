@@ -1,15 +1,24 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { addToCart } from "./Redux/Slice";
+import { addToCart, getProducts } from "./Redux/Slice";
+import { useEffect } from "react";
 const Details = () => {
     let id = useParams().id;
     let dispatch = useDispatch()
     let Navi = useNavigate();
     let storeData = useSelector(state => state.ECommerce.storeData)
     let data = storeData.filter(item => item.id === parseInt(id))
+    useEffect(() => {
+        dispatch(getProducts())
+        data = storeData.filter(item => item.id === parseInt(id))
+    })
+
     let ratingStar = []
-    for (let i = 0; i < data[0].rating; i++) {
-        ratingStar.push("⭐")
+    if (data.length > 0) {
+        console.log(data)
+        for (let i = 0; i < data[0].rating; i++) {
+            ratingStar.push("⭐")
+        }
     }
     let addToCartFunction = () => {
         dispatch(addToCart(data[0]))
@@ -17,7 +26,7 @@ const Details = () => {
     }
     return (
         <>
-            <div className="d-flex w-80" >
+            {data.length>0 && <div className="d-flex w-80 details" >
                 <div style={{ width: "80%", marginTop: '7em' }}>
                     <Link className="back-btn" onClick={() => Navi(-1)}><i className="fa-solid fa-arrow-left"></i></Link>
                     <div style={{ background: `url(${data[0].url}) no-repeat center`, height: '50vh', width: "100%", backgroundSize: "contain" }}></div>
@@ -38,7 +47,7 @@ const Details = () => {
                         <button className="btn btn-danger">Buy Now</button>
                     </div>
                 </div>
-            </div>
+            </div>}
         </>
     )
 }
