@@ -11,7 +11,7 @@ getData()
 let Slice = createSlice({
     name: "ECommerce",
     initialState: {
-        storeData: data1,
+        storeData: [],
         cartData: [],
         loggedUser: null
     },
@@ -36,7 +36,8 @@ let Slice = createSlice({
             state.cartData = JSON.parse(localStorage.getItem("cartData")) ?? [];
         },
         getProducts:(state,action)=>{
-            state.storeData=data1;
+            console.log(action)
+            state.storeData=action.payload??[];
         },
         removeFromCart: (state, action) => {
             let data = action.payload;

@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "./Redux/Slice";
+import axios from "axios";
 const Card1 = lazy(() => import('./Card'));
 const Home = () => {
     let [activeSubNav, setActiveSubNav] = useState("All");
@@ -42,8 +43,8 @@ const Home = () => {
     //     dispatch(getProducts())
     // }, 100);
     useEffect(() => {
-        dispatch(getProducts())
-    })
+        axios.get("https://e-commerce-backend-92mz.onrender.com/getData").then(res=>dispatch(getProducts(res.data)))      
+    },[])
     let data = useSelector((state) => state.ECommerce.storeData);
     return (
         <>

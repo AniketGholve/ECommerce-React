@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Card from "./Card"
 import { useEffect, useState } from "react"
 import { getProducts } from "./Redux/Slice"
+import axios from "axios"
 
 const ProductGallary = ({ category }) => {
     let [loadDataCount1, setLoadDataCount1] = useState(4)
@@ -10,8 +11,8 @@ const ProductGallary = ({ category }) => {
     let data = mainData.slice(0, loadDataCount1);
     let dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getProducts())
-    }, [])
+        axios.get("https://e-commerce-backend-92mz.onrender.com/getData").then(res=>dispatch(getProducts(res.data)))      
+    },[])
     return (
         <>
             {
@@ -36,8 +37,8 @@ const StoreGallary = () => {
     let [loadDataCount, setLoadDataCount] = useState(8)
     let dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getProducts())
-    }, [])
+        axios.get("https://e-commerce-backend-92mz.onrender.com/getData").then(res=>dispatch(getProducts(res.data)))      
+    },[])
     let mainData = useSelector((store) => store.ECommerce.storeData)
     let data = mainData.slice(0, loadDataCount);
     return (
