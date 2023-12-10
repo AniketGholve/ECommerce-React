@@ -3,7 +3,7 @@ import axios from "axios";
 let data1=[];
 
 async function getData() {
-    await axios.get("http://localhost:3000/getData").then(res => data1 = res.data)
+    await axios.get("https://e-commerce-backend-92mz.onrender.com/getData").then(res => data1 = res.data)
     return data1;
 }
 getData()

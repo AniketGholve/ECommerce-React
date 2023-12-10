@@ -38,9 +38,9 @@ const Home = () => {
         className: 'slidesMain'
     };
     let dispatch = useDispatch();
-    setTimeout(() => {
-        dispatch(getProducts())
-    }, 100);
+    // setTimeout(() => {
+    //     dispatch(getProducts())
+    // }, 100);
     useEffect(() => {
         dispatch(getProducts())
     })

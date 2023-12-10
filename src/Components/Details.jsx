@@ -6,11 +6,10 @@ const Details = () => {
     let id = useParams().id;
     let dispatch = useDispatch()
     let Navi = useNavigate();
-    let storeData = useSelector(state => state.ECommerce.storeData)
+    let storeData = useSelector(state => state.ECommerce.storeData)??[]
     let data = storeData.filter(item => item.id === parseInt(id))
     useEffect(() => {
         dispatch(getProducts())
-        data = storeData.filter(item => item.id === parseInt(id))
     })
 
     let ratingStar = []
@@ -26,7 +25,7 @@ const Details = () => {
     }
     return (
         <>
-            {data.length>0 && <div className="d-flex w-80 details" >
+            {data.length>0 && <div className="d-flex w-80 " >
                 <div style={{ width: "80%", marginTop: '7em' }}>
                     <Link className="back-btn" onClick={() => Navi(-1)}><i className="fa-solid fa-arrow-left"></i></Link>
                     <div style={{ background: `url(${data[0].url}) no-repeat center`, height: '50vh', width: "100%", backgroundSize: "contain" }}></div>

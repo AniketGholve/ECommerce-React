@@ -6,12 +6,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { getCartData, getLoggedUser } from "./Redux/Slice";
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const UserAction = () => {
     let cartData = useSelector(state => state.ECommerce.cartData);
     let loggedUser = useSelector(state => state.ECommerce.loggedUser);
-    let [logoutBtn, setLogoutBtn] = useState(true);
+    let [logoutBtn, setLogoutBtn] = useState(false);
     // let loggedUser = "Aniket";
     let dispatch = useDispatch();
     useEffect(() => {
@@ -29,23 +29,6 @@ const UserAction = () => {
     let data = {};
     const setData = (e) => {
         data[e.target.name] = e.target.value
-    }
-    const sendData = (e) => {
-        e.preventDefault();
-        axios.post('http://localhost:3000/register', data).then(res => console.log(res.data))
-    }
-    function setUserData(username) {
-        localStorage.setItem("loggedUser", username);
-        dispatch(getLoggedUser())
-    }
-    function toggleLogginBtn() {
-        setLoginView(true)
-        setLogoutBtn(!logoutBtn)
-    }
-    function logoutUser() {
-        loggedUser && localStorage.removeItem("loggedUser")
-        setLoginView(false);
-        dispatch(getLoggedUser())
     }
     const tosterSuccess = (data) => toast.success(data, {
         position: "top-right",
@@ -67,6 +50,31 @@ const UserAction = () => {
         progress: undefined,
         theme: "colored",
     });
+    const sendData = (e) => {
+        e.preventDefault();
+        try {
+            axios.post('https://e-commerce-backend-92mz.onrender.com/register', data).then(res => {
+                tosterSuccess(res.data.msg)
+            })
+        } catch (e) {
+            tosterError("User Exist Or Invalid Details")
+        }
+    }
+    function setUserData(username) {
+        localStorage.setItem("loggedUser", username);
+        dispatch(getLoggedUser())
+        tosterSuccess("Login Success")
+    }
+    function toggleLogginBtn() {
+        setLoginView(true)
+        setLogoutBtn(!logoutBtn)
+    }
+    function logoutUser() {
+        loggedUser && localStorage.removeItem("loggedUser")
+        setLoginView(false);
+        dispatch(getLoggedUser())
+    }
+
     const sendLoginData = (e) => {
         let data = {}
         e.preventDefault()
@@ -76,7 +84,7 @@ const UserAction = () => {
                 "email": e.target.email.value ?? null,
                 "password": e.target.password.value
             }
-            axios.post("http://localhost:3000/login", data).then(res => res.data.msg ? setUserData(res.data.username) : console.log(res.data.err));
+            axios.post("https://e-commerce-backend-92mz.onrender.com/login", data).then(res => res.data.msg ? setUserData(res.data.username) : tosterError(res.data.err));
         }
         else {
             toast.error('Invalid Email or password', {
@@ -95,6 +103,7 @@ const UserAction = () => {
     let [searchKey, setSearchKey] = useState(null)
     return (
         <>
+            <ToastContainer />
             <div className="d-flex justify-content-around mx-1 ">
                 <div>
                     <select name="" id="" className="mx-1 border-none">
