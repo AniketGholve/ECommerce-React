@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { addToCart, getProducts } from "./Redux/Slice";
 import { useEffect } from "react";
+import axios from "axios";
 const Details = () => {
     let id = useParams().id;
     let dispatch = useDispatch()
@@ -9,8 +10,8 @@ const Details = () => {
     let storeData = useSelector(state => state.ECommerce.storeData)??[]
     let data = storeData.filter(item => item.id === parseInt(id))
     useEffect(() => {
-        dispatch(getProducts())
-    })
+        axios.get("https://e-commerce-backend-92mz.onrender.com/getData").then(res=>dispatch(getProducts(res.data)))      
+    },[])
 
     let ratingStar = []
     if (data.length > 0) {
