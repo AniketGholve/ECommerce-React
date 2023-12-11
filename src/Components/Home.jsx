@@ -56,7 +56,7 @@ const Home = () => {
                 </Slider>
             </div>
             <h2 className="text-center">BEST SELLER</h2>
-            <div className="nav">
+            <div className="nav nav-mob">
                 <ul>
                     <li><Link className={activeSubNav === "All" ? "activeSubNav" : ""} onClick={() => setActiveSubNav("All")}>All</Link></li>
                     <li><Link className={activeSubNav === "Mac" ? "activeSubNav" : ""} onClick={() => setActiveSubNav("Mac")}>Mac</Link></li>

@@ -101,6 +101,13 @@
         position: static;
         top: 0%;
     }
+    .nav-mob ul {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+        display: grid;
+        margin: auto;
+        padding: 0%;
+        gap: .5em;
+    }
 }
 
 @media screen and (min-width:600px) and (max-width:1025px) {
