@@ -7,7 +7,7 @@ import axios from "axios"
 
 const ProductGallary = ({ category }) => {
     let [loadDataCount1, setLoadDataCount1] = useState(4)
-    let mainData = useSelector((store) => store.ECommerce.storeData).filter((item) => item.cat.includes(category))
+    let mainData = useSelector((store) => store.ECommerce.storeData).filter((item) => item.cat.includes(category.toLowerCase()))
     let data = mainData.slice(0, loadDataCount1);
     let dispatch = useDispatch();
     useEffect(() => {
