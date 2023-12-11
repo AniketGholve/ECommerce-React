@@ -44,7 +44,6 @@ const Details = () => {
                     </div>
                     <div className="detailsBtn">
                         <button className="btn btn-warning" onClick={addToCartFunction}>Add To Cart</button>
-                        <button className="btn btn-danger">Buy Now</button>
                     </div>
                 </div>
             </div>}
