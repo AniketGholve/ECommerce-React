@@ -15,6 +15,7 @@ import Footer from './Components/Footer'
 import { useEffect } from 'react'
 import { getProducts } from './Components/Redux/Slice'
 import { useDispatch } from 'react-redux'
+import Success from './Components/Success'
 
 function App() {
   let dispatch = useDispatch();
@@ -41,6 +42,7 @@ function App() {
           <Route path='/details/:id' element={<Details />} />
           <Route path='/cartdetails' element={<Cart />} />
           <Route path='/search/:product' element={<Search />} />
+          <Route path='/success' element={<Success />} />
         </Routes>
         <Footer />
       </BrowserRouter>
